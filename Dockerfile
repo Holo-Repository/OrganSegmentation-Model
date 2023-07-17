@@ -24,13 +24,15 @@ RUN pip3 install wheel
 RUN pip3 install -r requirements.txt
 
 # Install abdominal model
-RUN net_download dense_vnet_abdominal_ct_model_zoo
+RUN pip install "monai[fire]"
+RUN pip install pytorch-ignite==0.4.9
+# RUN net_download dense_vnet_abdominal_ct_model_zoo
 
 # Remove the sample nifti data from the download model so image will take your input instead
-RUN rm -rf /root/niftynet/data/dense_vnet_abdominal_ct/*
+# RUN rm -rf /root/niftynet/data/dense_vnet_abdominal_ct/*
 
 # Copy the config to the container to replace the defautl sample config file
-COPY config.ini /root/niftynet/extensions/dense_vnet_abdominal_ct/
+# COPY config.ini /root/niftynet/extensions/dense_vnet_abdominal_ct/
 
 EXPOSE ${PORT}
 
