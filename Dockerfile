@@ -14,6 +14,7 @@ RUN apt-get update  && \
 RUN mkdir -p ${APP_DIR}
 WORKDIR ${APP_DIR}
 COPY server.py test.py ./
+COPY models ./models
 
 # Copy the requirements file in to image for pip download
 COPY requirements.txt ./
