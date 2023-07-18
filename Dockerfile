@@ -34,6 +34,7 @@ RUN pip install pytorch-ignite==0.4.9
 # Copy the config to the container to replace the defautl sample config file
 #COPY config.ini /root/niftynet/extensions/dense_vnet_abdominal_ct/
 
+
 EXPOSE ${PORT}
 
 # Set the entry point to the script so when we start the docker it will run the server

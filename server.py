@@ -5,12 +5,21 @@ from flask import Flask, request, send_file
 from werkzeug.utils import secure_filename
 
 from models.dense_vnet_abdominal_ct.model import abdominal_model
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7e3ac3634cea36711b7474602a6fe367c7e1b8c6
 
 app = Flask(__name__)
 
 # The directory paths are given by the original model in the container
+<<<<<<< HEAD
 # UPLOAD_FOLDER = "/root/niftynet/data/dense_vnet_abdominal_ct"
 # OUTPUT_FOLDER = "/root/niftynet/models/dense_vnet_abdominal_ct/segmentation_output"
+=======
+#UPLOAD_FOLDER = "/root/niftynet/data/dense_vnet_abdominal_ct"
+#OUTPUT_FOLDER = "/root/niftynet/models/dense_vnet_abdominal_ct/segmentation_output"
+>>>>>>> 7e3ac3634cea36711b7474602a6fe367c7e1b8c6
 
 UPLOAD_FOLDER = "/models/dense_vnet_abdominal_ct/input"
 OUTPUT_FOLDER = "/models/dense_vnet_abdominal_ct/output"
