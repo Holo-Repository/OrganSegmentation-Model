@@ -4,12 +4,16 @@ import subprocess
 from flask import Flask, request, send_file
 from werkzeug.utils import secure_filename
 
+from models.dense_vnet_abdominal_ct.model import abdominal_model
 
 app = Flask(__name__)
 
 # The directory paths are given by the original model in the container
-UPLOAD_FOLDER = "/root/niftynet/data/dense_vnet_abdominal_ct"
-OUTPUT_FOLDER = "/root/niftynet/models/dense_vnet_abdominal_ct/segmentation_output"
+# UPLOAD_FOLDER = "/root/niftynet/data/dense_vnet_abdominal_ct"
+# OUTPUT_FOLDER = "/root/niftynet/models/dense_vnet_abdominal_ct/segmentation_output"
+
+UPLOAD_FOLDER = "/models/dense_vnet_abdominal_ct/input"
+OUTPUT_FOLDER = "/models/dense_vnet_abdominal_ct/output"
 
 ALLOWED_EXTENSION = "nii"
 UPLOAD_FILENAME = "seg_CT.nii"
@@ -43,14 +47,17 @@ def seg_file():
             file.filename = UPLOAD_FILENAME
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-        subprocess.run(
-            [
-                "/usr/local/bin/net_segment",
-                "inference",
-                "-c",
-                "/root/niftynet/extensions/dense_vnet_abdominal_ct/config.ini",
-            ]
-        )
+        # subprocess.run(
+        #     [
+        #         "/usr/local/bin/net_segment",
+        #         "inference",
+        #         "-c",
+        #         "/root/niftynet/extensions/dense_vnet_abdominal_ct/config.ini",
+        #     ]
+        # )
+
+        abdominal_model.predict()  
+        
         return send_file(OUTPUT_FOLDER + "/" + format_output_filename(filename)), 200
 
 
