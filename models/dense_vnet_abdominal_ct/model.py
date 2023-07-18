@@ -1,7 +1,6 @@
 import os
 import shutil
 import subprocess
-from jobs.jobs_io import get_logger_for_job
 
 UPLOAD_FOLDER = os.path.abspath("models/dense_vnet_abdominal_ct/input")
 OUTPUT_FOLDER = os.path.abspath("./models/dense_vnet_abdominal_ct/output")
