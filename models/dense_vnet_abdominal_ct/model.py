@@ -19,18 +19,20 @@ class Abdominal_model:
         os.mkdir(OUTPUT_FOLDER)
 
 
-    def predict(self):
+    def predict(self, file):
         os.chdir("models/dense_vnet_abdominal_ct")
     
+        file.save(os.path.join("/usr/src/app/models/dense_vnet_abdominal_ct/input", "seg_CT.nii"))
+
         command = [
-            'python',
+            'python3',
             '-m',
             'monai.bundle',
             'run',
             '--config_file',
             'configs/inference.json',
             '--datalist',
-            "['input/temp.nii']",
+            "['input/seg_CT.nii']",
             '--output_dir',
             'output/'
         ]
@@ -38,7 +40,7 @@ class Abdominal_model:
         process = subprocess.Popen(command)
         process.wait() 
         
-        output_path = "./models/dense_vnet_abdominal_ct/output/temp/temp_trans.nii.gz"
+        output_path = "/usr/src/app/models/dense_vnet_abdominal_ct/output/seg_CT/seg_CT_trans.nii.gz"
 
         os.chdir("../..")
         
