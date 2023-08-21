@@ -1,4 +1,4 @@
-# HoloRepository 2023
+# HoloRepository 2023<a href="https://dev.azure.com/Holo-Repository/OrganSegmentation/_build/results?buildId=75&view=results"><img src="https://dev.azure.com/MSGOSHHOLO/HoloRepository/_apis/build/status/HoloRepository-Core?branchName=dev&jobName=HoloStorageAccessor" alt="HoloStorageAccessor build status" align="right" /></a>
 This repository is for the HoloRepository 2023 project, an update from the 2019 version. The project is deployed as a webapp on Azure. Th webapp is a Flask app that uses a Docker container to run a [Monai Zoo](https://monai.io/model-zoo.html) model. The model is a neural network that segments abdominal CT scans. The webapp will process the inputs from the pipeline and sent the result back to the pipeline.
 
 Main chganegs from the 2019 version:
