@@ -10,6 +10,7 @@ DEBUG = 0
 class Abdominal_model:
 
     def __init__(self, saved_path):
+        # Generate necessary folders 
         self.config_path = saved_path
         if os.path.isdir(UPLOAD_FOLDER):
             shutil.rmtree(UPLOAD_FOLDER)
@@ -20,10 +21,14 @@ class Abdominal_model:
 
 
     def predict(self, file):
+
+        # Move to the model directory
         os.chdir("models/dense_vnet_abdominal_ct")
-    
+
+        # Save the file to the input folder
         file.save(os.path.join("/usr/src/app/models/dense_vnet_abdominal_ct/input", "seg_CT.nii"))
 
+        # Command to run the model  
         command = [
             'python3',
             '-m',
@@ -40,8 +45,10 @@ class Abdominal_model:
         process = subprocess.Popen(command)
         process.wait() 
         
+        # Output path for the segmentation
         output_path = "/usr/src/app/models/dense_vnet_abdominal_ct/output/seg_CT/seg_CT_trans.nii.gz"
 
+        # Move back to the root directory
         os.chdir("../..")
         
         return output_path

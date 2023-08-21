@@ -1,3 +1,12 @@
+# HoloRepository 2023
+This repository is for the HoloRepository 2023 project, an update from the 2019 version. The project is deployed as a webapp on Azure. Th webapp is a Flask app that uses a Docker container to run a [Monai Zoo](https://monai.io/model-zoo.html) model. The model is a neural network that segments abdominal CT scans. The webapp will process the inputs from the pipeline and sent the result back to the pipeline.
+
+Main chganegs from the 2019 version:
+- The model is now a Monai Zoo model instead of a NiftyNet model, the docker file and model.py is updated to reflect this change, with new files for the model added
+- The webapp is now deployed on Azure individually instead of being deployed as a part of the pipeline
+
+Below is the original README from the 2019 version of the project.
+
 # Niftynet abdominal neural network container
 This page describes how to create a docker image that is with the endpoint for the network described in
 
